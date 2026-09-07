@@ -74,9 +74,10 @@ export default function App() {
       {/* ── CINEMATIC BACKDROP ── */}
       <div className="backdrop" aria-hidden="true" />
 
-      {/* ── DECORATIVE STARS ── */}
+      {/* ── DECORATIVE STARS & DVD ── */}
       <img src="assets/el/star-a.png" alt="" className="el el--star-a" aria-hidden="true" />
       <img src="assets/el/star-b.png" alt="" className="el el--star-b" aria-hidden="true" />
+      <img src="assets/el/cd-a.png" alt="" className="el el--dvd" aria-hidden="true" />
 
       {/* ── NAVBAR ── */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/5' : 'bg-transparent'}`}>
