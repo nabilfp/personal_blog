@@ -190,9 +190,9 @@ export default function App() {
             </div>
             <div className="flex flex-col items-center gap-2 group">
               <div className="w-16 h-16 rounded-xl bg-white dark:bg-gray-800 shadow border border-gray-100 dark:border-gray-700 flex items-center justify-center p-2 group-hover:shadow-md transition-shadow">
-                <img src="images/robot.jpg" alt="robot" className="w-full h-full object-contain" />
+                <img src="images/robot.svg" alt="robot" className="w-full h-full object-contain" />
               </div>
-              <span className="text-xs text-gray-500 dark:text-gray-400 text-center max-w-[80px]">robot.jpg</span>
+              <span className="text-xs text-gray-500 dark:text-gray-400 text-center max-w-[80px]">robot.svg</span>
             </div>
           </div>
         </div>
