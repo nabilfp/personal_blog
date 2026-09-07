@@ -78,6 +78,7 @@ body {
   pointer-events: none;
   z-index: 0;
   mix-blend-mode: screen;
+  filter: invert(1);
   opacity: 0.5;
 }
 
