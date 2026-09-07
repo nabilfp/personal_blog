@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Phone, Mail, Smartphone, Sun, Moon } from 'lucide-react';
+import { Phone, Mail, Smartphone, Sun, Moon, Sparkles } from 'lucide-react';
 import ProfileCard from './components/react-bits/ProfileCard/ProfileCard';
 import './App.css';
 
@@ -122,7 +122,7 @@ export default function App() {
               Data Diri &amp; Biodata
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Halo, saya <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Nabil</span> ✨
+              Halo, saya <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Nabil</span> <Sparkles className="inline-block text-blue-500 dark:text-blue-400 mb-1" />
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
               Saya berusia 18 tahun dan sangat menyukai teknologi, khususnya <strong className="text-gray-800 dark:text-gray-100">infrastruktur IT</strong>, administrasi sistem, dan keamanan siber. Saya sedang menempuh gelar di bidang Sistem Informasi dan aktif membangun fondasi kemampuan saya di dunia teknologi.
