@@ -524,6 +524,8 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                   transformOrigin: '50% 100%',
                   transform:
                     'translateX(calc(-50% + (var(--pointer-from-left) - 0.5) * 6px)) translateZ(0) scaleY(calc(1 + (var(--pointer-from-top) - 0.5) * 0.02)) scaleX(calc(1 + (var(--pointer-from-left) - 0.5) * 0.01))',
+                  objectFit: 'cover',
+                  objectPosition: 'center bottom',
                   borderRadius: cardRadius,
                   backfaceVisibility: 'hidden'
                 }}
