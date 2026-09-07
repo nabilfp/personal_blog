@@ -35,7 +35,7 @@ const biodataItems = [
 ];
 
 const contactItems = [
-  { icon: Phone, label: 'WhatsApp', href: 'https://wa.me/6285213081416?text=Halo,%20saya%20ingin%20bertanya.', text: '085213081416' },
+  { icon: Phone, label: 'WhatsApp', href: 'https://wa.me/6285213081416?text=AKU%20PENDUKUNG%20ISRAEL%20DAN%20AKU%20BANGGA%20%23LARPINGFINALBOS%23AKUTRIPLECLAH', text: 'AKU PENDUKUNG ISRAEL DAN AKU BANGGA #LARPINGFINALBOS#AKUTRIPLECLAH' },
   { icon: Mail, label: 'Email',    href: 'mailto:nabilnajwaakmal02@gmail.com', text: 'nabilnajwaakmal02@gmail.com' },
   { icon: Smartphone, label: 'Instagram', href: 'https://www.instagram.com/naaaa.bl/', text: '@naaaa.bl' },
   { icon: GithubIcon, label: 'GitHub',   href: 'https://github.com/nabilfp', text: 'github.com/nabilfp' },
