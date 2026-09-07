@@ -87,7 +87,7 @@ export default function App() {
             <img
               src="images/profil.jpg"
               alt="Nabil Najwa Akmal"
-              className="w-9 h-9 rounded-full object-cover border-2 border-blue-500/50"
+              className="w-9 h-9 rounded-full object-cover border-2 border-white/20"
             />
             <span className="font-bold text-white text-sm sm:text-base">Nabil Najwa Akmal</span>
           </div>
@@ -98,9 +98,9 @@ export default function App() {
             <img src="images/ukm-logo.png"   alt="UKM Triple C"                className="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" title="UKM Triple C" />
             <img src="images/logo.svg"        alt="Logo UTM"                    className="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" title="Logo UTM" />
 
-            <a href="#hero"    className="hidden sm:block text-sm font-medium text-gray-400 hover:text-blue-400 transition-colors">Tentang</a>
-            <a href="#biodata" className="hidden sm:block text-sm font-medium text-gray-400 hover:text-blue-400 transition-colors">Biodata</a>
-            <a href="#contact" className="hidden sm:block text-sm font-medium text-gray-400 hover:text-blue-400 transition-colors">Kontak</a>
+            <a href="#hero"    className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Tentang</a>
+            <a href="#biodata" className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Biodata</a>
+            <a href="#contact" className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Kontak</a>
 
             <button
               onClick={toggle}
@@ -134,11 +134,11 @@ export default function App() {
 
           {/* Hero text */}
           <div className="flex-1 text-center lg:text-left">
-            <div className="inline-block bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold px-3 py-1 rounded-full mb-4 tracking-wide uppercase">
+            <div className="inline-block bg-white/10 border border-white/15 text-gray-300 text-xs font-semibold px-3 py-1 rounded-full mb-4 tracking-wide uppercase">
               Data Diri &amp; Biodata
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Halo, saya <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-500">Nabil</span> <Sparkles className="inline-block text-blue-400 mb-1" />
+              Halo, saya <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-400">Nabil</span> <Sparkles className="inline-block text-gray-300 mb-1" />
             </h1>
             <p className="text-lg sm:text-xl text-gray-400 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
               Saya berusia 18 tahun dan sangat menyukai teknologi, khususnya <strong className="text-white">infrastruktur IT</strong>, administrasi sistem, dan keamanan siber. Saya sedang menempuh gelar di bidang Sistem Informasi dan aktif membangun fondasi kemampuan saya di dunia teknologi.
@@ -147,7 +147,7 @@ export default function App() {
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
               <a
                 href="#biodata"
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-blue-900/40 transition-all duration-200 hover:-translate-y-0.5"
+                className="px-6 py-3 bg-white text-gray-900 font-semibold rounded-xl shadow-lg shadow-black/40 hover:bg-gray-200 transition-all duration-200 hover:-translate-y-0.5"
               >
                 Lihat Biodata →
               </a>
@@ -167,18 +167,18 @@ export default function App() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>Biodata Diri</h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto" />
+            <div className="w-16 h-1 bg-gradient-to-r from-gray-400 to-gray-600 rounded-full mx-auto" />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {biodataItems.map((item) => (
               <div
                 key={item.label}
-                className="group relative bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-blue-500/50 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-900/20"
+                className="group relative bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-white/30 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-black/30"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                 <div className="relative">
-                  <span className="block text-xs font-semibold uppercase tracking-widest text-blue-400 mb-2">{item.label}</span>
+                  <span className="block text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">{item.label}</span>
                   <span className="block text-lg font-semibold text-white">{item.value}</span>
                 </div>
               </div>
@@ -193,19 +193,19 @@ export default function App() {
           <p className="text-center text-sm font-medium text-gray-500 mb-8 uppercase tracking-widest">Afiliasi</p>
           <div className="flex flex-wrap items-center justify-center gap-10">
             <div className="flex flex-col items-center gap-2 group">
-              <div className="w-16 h-16 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center p-2 group-hover:shadow-lg group-hover:shadow-blue-900/20 transition-shadow">
+              <div className="w-16 h-16 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center p-2 group-hover:shadow-lg group-hover:shadow-black/30 transition-shadow">
                 <img src="images/univ-logo.webp" alt="Universitas Trunojoyo Madura" className="w-full h-full object-contain" />
               </div>
               <span className="text-xs text-gray-500 text-center max-w-[80px]">Universitas Trunojoyo Madura</span>
             </div>
             <div className="flex flex-col items-center gap-2 group">
-              <div className="w-16 h-16 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center p-2 group-hover:shadow-lg group-hover:shadow-blue-900/20 transition-shadow">
+              <div className="w-16 h-16 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center p-2 group-hover:shadow-lg group-hover:shadow-black/30 transition-shadow">
                 <img src="images/ukm-logo.png" alt="UKM Triple C" className="w-full h-full object-contain" />
               </div>
               <span className="text-xs text-gray-500 text-center max-w-[80px]">UKM Triple C</span>
             </div>
             <div className="flex flex-col items-center gap-2 group">
-              <div className="w-16 h-16 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center p-2 group-hover:shadow-lg group-hover:shadow-blue-900/20 transition-shadow">
+              <div className="w-16 h-16 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center p-2 group-hover:shadow-lg group-hover:shadow-black/30 transition-shadow">
                 <img src="images/robot.svg" alt="robot" className="w-full h-full object-contain" />
               </div>
               <span className="text-xs text-gray-500 text-center max-w-[80px]">robot.svg</span>
@@ -219,7 +219,7 @@ export default function App() {
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>Kontak</h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto" />
+            <div className="w-16 h-1 bg-gradient-to-r from-gray-400 to-gray-600 rounded-full mx-auto" />
           </div>
 
           <div className="space-y-4">
@@ -229,14 +229,14 @@ export default function App() {
                 href={item.href}
                 target={item.href.startsWith('http') ? '_blank' : undefined}
                 rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="flex items-center gap-4 p-5 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-900/20 transition-all duration-200 group"
+                className="flex items-center gap-4 p-5 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-white/30 hover:shadow-lg hover:shadow-black/30 transition-all duration-200 group"
               >
-                <item.icon className="text-2xl flex-shrink-0 text-gray-400 group-hover:text-blue-400 transition-colors" />
+                <item.icon className="text-2xl flex-shrink-0 text-gray-400 group-hover:text-white transition-colors" />
                 <div className="flex-1 min-w-0">
-                  <div className="text-xs font-semibold uppercase tracking-wider text-blue-400 mb-0.5">{item.label}</div>
-                  <div className="text-gray-300 font-medium truncate group-hover:text-blue-400 transition-colors">{item.text}</div>
+                  <div className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-0.5">{item.label}</div>
+                  <div className="text-gray-300 font-medium truncate group-hover:text-white transition-colors">{item.text}</div>
                 </div>
-                <svg className="w-4 h-4 text-gray-500 group-hover:text-blue-400 flex-shrink-0 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-gray-500 group-hover:text-white flex-shrink-0 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </a>
@@ -255,7 +255,7 @@ export default function App() {
       {/* ── SCROLL TO TOP ── */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-6 right-6 w-11 h-11 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg shadow-blue-900/40 flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 z-50"
+        className="fixed bottom-6 right-6 w-11 h-11 bg-white text-gray-900 hover:bg-gray-200 rounded-full shadow-lg shadow-black/40 flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 z-50"
         aria-label="Scroll to top"
       >
         ↑
