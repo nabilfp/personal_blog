@@ -6,6 +6,51 @@
 /* Enable class-based dark mode in Tailwind v4 */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ── Cinematic Backdrop System ── */
+:root {
+  --bg: #000000;
+  --fg: #ffffff;
+  --muted: #555555;
+  --accent: #1ab9ee;
+  --accent-warm: #f5c542;
+  --card: rgba(255,255,255,0.04);
+  --border: rgba(255,255,255,0.08);
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(26,185,238,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(245,197,66,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 30% at 10% 80%, rgba(26,185,238,0.06) 0%, transparent 40%);
+  transition: background 1s ease;
+}
+
+/* Scroll-based backdrop tone shift */
+body.scrolled .backdrop {
+  background: #050508;
+  background-image:
+    radial-gradient(ellipse 60% 50% at 50% 20%, rgba(26,185,238,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 30% at 80% 100%, rgba(245,197,66,0.03) 0%, transparent 40%);
+}
+
+/* Subtle animated grid pattern */
+.backdrop::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 70%);
+  pointer-events: none;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -19,6 +64,8 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--bg);
+  color: var(--fg);
 }
 
 #root {
