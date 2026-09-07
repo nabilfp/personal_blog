@@ -97,8 +97,8 @@ export default function App() {
             <ProfileCard
               avatarUrl="images/profil.jpg"
               miniAvatarUrl="images/profil.jpg"
-              name="Nabil Najwa Akmal"
-              title="Mahasiswa Sistem Informasi"
+              name=""
+              title=""
               handle="nabilfp"
               status="Aktif"
               contactText="Kontak"
