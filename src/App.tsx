@@ -30,7 +30,7 @@ const biodataItems = [
   { label: 'Nama',   value: 'Nabil Najwa Akmal' },
   { label: 'Asal',   value: 'Jombang, Jawa Timur' },
   { label: 'Umur',   value: '18 tahun' },
-  { label: 'Alumni', value: 'SMA Negeri Jombang' },
+  { label: 'Alumni', value: 'SMA Negeri Bareng' },
   { label: 'Status', value: 'Mahasiswa' },
 ];
 
@@ -75,9 +75,9 @@ export default function App() {
       <div className="backdrop" aria-hidden="true" />
 
       {/* ── DECORATIVE STARS & DVD ── */}
-      <img src="assets/el/star-a.png" alt="" className="el el--star-a" aria-hidden="true" />
-      <img src="assets/el/star-b.png" alt="" className="el el--star-b" aria-hidden="true" />
-      <img src="assets/el/cd-a.png" alt="" className="el el--dvd" aria-hidden="true" />
+      <img src="assets/el/opt_star-a.webp" alt="" className="el el--star-a" aria-hidden="true" decoding="async" width="481" height="603" />
+      <img src="assets/el/opt_star-b.webp" alt="" className="el el--star-b" aria-hidden="true" decoding="async" width="1167" height="1170" />
+      <img src="assets/el/opt_cd-a.webp" alt="" className="el el--dvd" aria-hidden="true" decoding="async" width="794" height="726" />
 
       {/* ── NAVBAR ── */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/5' : 'bg-transparent'}`}>
@@ -94,9 +94,9 @@ export default function App() {
 
           {/* Right: logos + nav + theme toggle */}
           <nav className="flex items-center gap-3 sm:gap-4">
-            <img src="images/univ-logo.webp" alt="Universitas Trunojoyo Madura" className="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" title="Universitas Trunojoyo Madura" />
-            <img src="images/ukm-logo.png"   alt="UKM Triple C"                className="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" title="UKM Triple C" />
-            <img src="images/logo.svg"        alt="Logo UTM"                    className="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" title="Logo UTM" />
+            <img src="images/univ-logo.webp" alt="Universitas Trunojoyo Madura" className="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" loading="lazy" decoding="async" title="Universitas Trunojoyo Madura" />
+            <img src="images/ukm-logo.png"   alt="UKM Triple C"                className="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" loading="lazy" decoding="async" title="UKM Triple C" />
+            <img src="images/logo.svg"        alt="Logo UTM"                    className="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" loading="lazy" decoding="async" title="Logo UTM" />
 
             <a href="#hero"    className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Tentang</a>
             <a href="#biodata" className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Biodata</a>
