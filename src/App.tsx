@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Phone, Mail, Smartphone, Sun, Moon, Sparkles } from 'lucide-react';
+import { Phone, Mail, Smartphone, Sun, Moon } from 'lucide-react';
 import ProfileCard from './components/react-bits/ProfileCard/ProfileCard';
 import BootScreen from './components/BootScreen/BootScreen';
 import AudioControl from './components/AudioControl/AudioControl';
@@ -144,7 +144,7 @@ export default function App() {
               Data Diri &amp; Biodata
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Halo, saya <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-400">Nabil</span> <Sparkles className="inline-block text-gray-300 mb-1" />
+              Halo, saya <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-400">Nabil</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-400 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
               Saya berusia 18 tahun dan sangat menyukai teknologi, khususnya <strong className="text-white">infrastruktur IT</strong>, administrasi sistem, dan keamanan siber. Saya sedang menempuh gelar di bidang Sistem Informasi dan aktif membangun fondasi kemampuan saya di dunia teknologi.
