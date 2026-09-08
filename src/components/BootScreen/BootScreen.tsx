@@ -64,9 +64,7 @@ const BootScreen: React.FC<BootScreenProps> = ({ onDone }) => {
 
   return (
     <div className={`boot ${done ? 'is-done' : ''}`} role="status" aria-label="Loading">
-      <div className="boot__logo">
-        <span className="boot__monogram">N</span>
-      </div>
+      <img src="images/profil.jpg" alt="" className="boot__img" draggable={false} />
       <div className="boot__bar"><span className="boot__bar-fill" style={{ right: `${100 - progress}%` }} /></div>
       <div className="boot__pct">{String(Math.round(progress)).padStart(3, '0')}</div>
     </div>

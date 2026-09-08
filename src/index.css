@@ -97,27 +97,14 @@ body.is-booting {
   visibility: hidden;
 }
 
-.boot__logo {
-  width: min(140px, 40vw);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.04);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
-}
-
-.boot__monogram {
-  font-size: clamp(3rem, 10vw, 4.5rem);
-  font-weight: 700;
-  line-height: 1;
-  background: linear-gradient(135deg, #ffffff 0%, #9a9a9a 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-family: 'Playfair Display', serif;
+.boot__img {
+  width: min(230px, 44vw);
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .boot__bar {
