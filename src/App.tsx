@@ -29,7 +29,7 @@ function useDarkMode() {
 const biodataItems = [
   { label: 'Nama',   value: 'Nabil Najwa Akmal' },
   { label: 'Asal',   value: 'Jombang, Jawa Timur' },
-  { label: 'Umur',   value: '18 tahun' },
+  { label: 'Umur',   value: '18 Tahun' },
   { label: 'Alumni', value: 'SMA Negeri Bareng' },
   { label: 'Kuliah', value: 'Universitas Trunojoyo Madura' },
   { label: 'Status', value: 'Mahasiswa' },
