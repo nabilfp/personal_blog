@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Phone, Mail, Smartphone, Sun, Moon, Sparkles } from 'lucide-react';
 import ProfileCard from './components/react-bits/ProfileCard/ProfileCard';
 import BootScreen from './components/BootScreen/BootScreen';
+import AudioControl from './components/AudioControl/AudioControl';
 import './App.css';
 
 /* ─────────── dark-mode hook ─────────── */
@@ -265,6 +266,9 @@ export default function App() {
       >
         ↑
       </button>
+
+      {/* ── AUDIO TOGGLE ── */}
+      <AudioControl src="assets/audio/mist.mp3" />
 
     </div>
   );

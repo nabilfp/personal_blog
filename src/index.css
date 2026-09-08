@@ -175,3 +175,35 @@ body.is-booting {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(25px) rotate(15deg); }
 }
+
+/* ── Audio Toggle ── */
+.audio-toggle {
+  position: fixed;
+  bottom: 6.5rem;
+  right: 1.5rem;
+  z-index: 60;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #e5e5e5;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.audio-toggle:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.audio-toggle[aria-pressed='true'] {
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.15);
+}
