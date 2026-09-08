@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Phone, Mail, Smartphone, Sun, Moon, Sparkles } from 'lucide-react';
 import ProfileCard from './components/react-bits/ProfileCard/ProfileCard';
+import Waves from './components/react-bits/Waves/Waves';
 import './App.css';
 
 /* ─────────── dark-mode hook ─────────── */
@@ -74,10 +75,18 @@ export default function App() {
       {/* ── CINEMATIC BACKDROP ── */}
       <div className="backdrop" aria-hidden="true" />
 
-      {/* ── DECORATIVE STARS & DVD ── */}
-      <img src="assets/el/opt_star-a.webp" alt="" className="el el--star-a" aria-hidden="true" decoding="async" width="481" height="603" />
-      <img src="assets/el/opt_star-b.webp" alt="" className="el el--star-b" aria-hidden="true" decoding="async" width="1167" height="1170" />
-      <img src="assets/el/opt_cd-a.webp" alt="" className="el el--dvd" aria-hidden="true" decoding="async" width="794" height="726" />
+      {/* ── ANIMATED WAVES BACKGROUND ── */}
+      <div className="waves-bg" aria-hidden="true">
+        <Waves
+          lineColor="rgba(255,255,255,0.08)"
+          waveSpeedX={0.0125}
+          waveSpeedY={0.005}
+          waveAmpX={24}
+          waveAmpY={12}
+          xGap={12}
+          yGap={34}
+        />
+      </div>
 
       {/* ── NAVBAR ── */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/5' : 'bg-transparent'}`}>
