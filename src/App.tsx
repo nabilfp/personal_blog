@@ -31,6 +31,7 @@ const biodataItems = [
   { label: 'Asal',   value: 'Jombang, Jawa Timur' },
   { label: 'Umur',   value: '18 tahun' },
   { label: 'Alumni', value: 'SMA Negeri Bareng' },
+  { label: 'Kuliah', value: 'Universitas Trunojoyo Madura' },
   { label: 'Status', value: 'Mahasiswa' },
 ];
 
