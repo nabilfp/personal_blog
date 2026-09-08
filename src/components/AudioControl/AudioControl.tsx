@@ -6,16 +6,18 @@ interface AudioControlProps {
 }
 
 const VOL = 0.42;
-const ARM = ['pointerdown', 'pointerup', 'click', 'keydown', 'touchstart', 'touchend', 'wheel', 'scroll'];
+// Only gestures that actually grant autoplay activation. Scroll/wheel do NOT,
+// so they are excluded (a first scroll used to fail silently).
+const ARM = ['pointerdown', 'mousedown', 'touchstart', 'keydown', 'click'];
 
 const AudioControl: React.FC<AudioControlProps> = ({ src }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [on, setOn] = useState(true);
-  const wantedRef = useRef(false);
+  const wantedRef = useRef(true);
   const audibleRef = useRef(false);
   const armedRef = useRef(false);
   const fadeTimerRef = useRef<number | null>(null);
-  const inFlightRef = useRef<Promise<boolean> | null>(null);
+  const startedRef = useRef(false);
 
   useEffect(() => {
     const audio = new Audio(src);
@@ -23,6 +25,15 @@ const AudioControl: React.FC<AudioControlProps> = ({ src }) => {
     audio.preload = 'auto';
     audio.playsInline = true;
     audioRef.current = audio;
+
+    let stored = '1';
+    try {
+      stored = sessionStorage.getItem('kc_sound') || '1';
+    } catch {
+      /* noop */
+    }
+    wantedRef.current = stored === '1';
+    setOn(stored === '1');
 
     const fadeTo = (target: number, done?: () => void) => {
       if (fadeTimerRef.current) window.clearInterval(fadeTimerRef.current);
@@ -40,58 +51,42 @@ const AudioControl: React.FC<AudioControlProps> = ({ src }) => {
       }, 40);
     };
 
-    const rollSilently = () => {
-      audio.muted = true;
-      audio.volume = 0;
-      const p = audio.play();
-      if (p && p.catch) p.catch(() => {});
-    };
+    const canStart = () => wantedRef.current && !startedRef.current;
 
-    const goAudible = (): Promise<boolean> => {
-      if (audibleRef.current) return Promise.resolve(true);
-      if (inFlightRef.current) return inFlightRef.current;
-
-      const wasMuted = audio.muted;
+    const tryStart = (): Promise<boolean> => {
+      if (audibleRef.current || startedRef.current) return Promise.resolve(true);
       audio.muted = false;
-      if (wasMuted) {
-        try {
-          audio.currentTime = 0;
-        } catch {
-          /* noop */
-        }
-      }
       audio.volume = 0;
+      audio.currentTime = 0;
       let p: Promise<void> | null = null;
       try {
         p = audio.play() || null;
       } catch {
         p = null;
       }
-      const settle = (ok: boolean) => {
-        inFlightRef.current = null;
+      const done = (ok: boolean) => {
+        if (ok) {
+          startedRef.current = true;
+          audibleRef.current = true;
+          fadeTo(VOL);
+        }
         return ok;
       };
-      const win = () => {
-        audibleRef.current = true;
-        fadeTo(VOL);
-        return settle(true);
-      };
-      const lose = () => {
-        audio.muted = wasMuted;
-        if (wasMuted && audio.paused) rollSilently();
-        return settle(false);
-      };
-      if (!p || !p.then) return Promise.resolve(audio.paused ? lose() : win());
-      inFlightRef.current = p.then(win, lose);
-      return inFlightRef.current;
+      if (!p || !p.then) {
+        return Promise.resolve(audio.paused ? done(false) : done(true));
+      }
+      return p.then(
+        () => done(true),
+        () => done(false)
+      );
     };
 
     const kick = () => {
-      if (!wantedRef.current || audibleRef.current) {
+      if (!canStart()) {
         disarm();
         return;
       }
-      goAudible().then(ok => {
+      tryStart().then(ok => {
         if (ok) disarm();
       });
     };
@@ -106,55 +101,22 @@ const AudioControl: React.FC<AudioControlProps> = ({ src }) => {
       ARM.forEach(t => window.removeEventListener(t, kick, true));
     };
 
-    const setSound = (want: boolean) => {
-      wantedRef.current = want;
-      setOn(want);
-      try {
-        sessionStorage.setItem('kc_sound', want ? '1' : '0');
-      } catch {
-        /* noop */
-      }
-      if (want) {
-        goAudible().then(ok => {
-          if (!ok) {
-            rollSilently();
-            arm();
-          }
-        });
-      } else {
-        audibleRef.current = false;
-        disarm();
-        fadeTo(0, () => audio.pause());
-      }
-    };
+    // Try to start right away; only if the browser blocks it, wait for a
+    // real activation gesture.
+    if (canStart()) {
+      tryStart().then(ok => {
+        if (!ok) arm();
+      });
+    }
 
     const onVisibility = () => {
       if (document.hidden) {
-        if (audio && !audio.paused && wantedRef.current) {
-          audio.pause();
-        }
+        if (wantedRef.current && audibleRef.current && !audio.paused) audio.pause();
       } else if (wantedRef.current && audibleRef.current && audio.paused) {
         audio.play().catch(() => {});
       }
     };
     document.addEventListener('visibilitychange', onVisibility);
-
-    // restore per-session preference (default ON), rolling silently to warm
-    // the buffer; any gesture unmutes it (browsers block autoplay with sound)
-    let stored = '1';
-    try {
-      stored = sessionStorage.getItem('kc_sound') || '1';
-    } catch {
-      /* noop */
-    }
-    wantedRef.current = stored === '1';
-    setOn(stored === '1');
-    if (stored === '1') {
-      rollSilently();
-      arm();
-    } else {
-      rollSilently();
-    }
 
     return () => {
       document.removeEventListener('visibilitychange', onVisibility);
@@ -181,71 +143,33 @@ const AudioControl: React.FC<AudioControlProps> = ({ src }) => {
       /* noop */
     }
 
-    const goAudible = (): Promise<boolean> => {
-      if (audibleRef.current) return Promise.resolve(true);
-      const wasMuted = audio.muted;
-      audio.muted = false;
-      if (wasMuted) {
-        try {
-          audio.currentTime = 0;
-        } catch {
-          /* noop */
-        }
-      }
-      audio.volume = 0;
-      let p: Promise<void> | null = null;
-      try {
-        p = audio.play() || null;
-      } catch {
-        p = null;
-      }
-      const win = () => {
-        audibleRef.current = true;
-        const step = VOL / 22;
-        fadeTimerRef.current = window.setInterval(() => {
-          if (audio.volume >= VOL - 0.01) {
-            audio.volume = VOL;
-            if (fadeTimerRef.current) window.clearInterval(fadeTimerRef.current);
-            fadeTimerRef.current = null;
-          } else {
-            audio.volume += step;
-          }
-        }, 40);
-        return true;
-      };
-      const fadeOut = (done?: () => void) => {
-        if (fadeTimerRef.current) window.clearInterval(fadeTimerRef.current);
-        const step = -audio.volume / 22;
-        fadeTimerRef.current = window.setInterval(() => {
-          audio.volume = Math.max(0, audio.volume + step);
-          if (audio.volume <= 0.01) {
-            audio.volume = 0;
-            if (fadeTimerRef.current) window.clearInterval(fadeTimerRef.current);
-            fadeTimerRef.current = null;
-            audio.pause();
-            done && done();
-          }
-        }, 40);
-      };
-      if (!p || !p.then) {
-        if (audio.paused) return Promise.resolve(false);
-        fadeOut();
-        audibleRef.current = false;
-        return Promise.resolve(false);
-      }
-      inFlightRef.current = p.then(
-        () => {
-          win();
-          return true;
-        },
-        () => false
-      );
-      return inFlightRef.current;
-    };
-
     if (want) {
-      goAudible();
+      if (!audibleRef.current && !startedRef.current) {
+        audio.muted = false;
+        audio.volume = 0;
+        audio.currentTime = 0;
+        const p = audio.play();
+        const win = () => {
+          startedRef.current = true;
+          audibleRef.current = true;
+          const step = VOL / 22;
+          fadeTimerRef.current = window.setInterval(() => {
+            if (audio.volume >= VOL - 0.01) {
+              audio.volume = VOL;
+              if (fadeTimerRef.current) window.clearInterval(fadeTimerRef.current);
+              fadeTimerRef.current = null;
+            } else {
+              audio.volume += step;
+            }
+          }, 40);
+        };
+        if (p && p.then) p.then(win).catch(() => {});
+        else if (!audio.paused) win();
+      } else if (audio.paused) {
+        audio.play().catch(() => {});
+      }
     } else {
+      startedRef.current = false;
       audibleRef.current = false;
       const step = -audio.volume / 22;
       if (fadeTimerRef.current) window.clearInterval(fadeTimerRef.current);
