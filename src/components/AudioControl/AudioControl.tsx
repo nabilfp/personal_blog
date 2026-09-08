@@ -10,7 +10,7 @@ const ARM = ['pointerdown', 'pointerup', 'click', 'keydown', 'touchstart', 'touc
 
 const AudioControl: React.FC<AudioControlProps> = ({ src }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [on, setOn] = useState(false);
+  const [on, setOn] = useState(true);
   const wantedRef = useRef(false);
   const audibleRef = useRef(false);
   const armedRef = useRef(false);
@@ -139,13 +139,16 @@ const AudioControl: React.FC<AudioControlProps> = ({ src }) => {
     };
     document.addEventListener('visibilitychange', onVisibility);
 
-    // restore per-session preference, silently rolling to warm buffer
-    let stored = '0';
+    // restore per-session preference (default ON), rolling silently to warm
+    // the buffer; any gesture unmutes it (browsers block autoplay with sound)
+    let stored = '1';
     try {
-      stored = sessionStorage.getItem('kc_sound') || '0';
+      stored = sessionStorage.getItem('kc_sound') || '1';
     } catch {
       /* noop */
     }
+    wantedRef.current = stored === '1';
+    setOn(stored === '1');
     if (stored === '1') {
       rollSilently();
       arm();
