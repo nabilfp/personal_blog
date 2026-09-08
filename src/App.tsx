@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Phone, Mail, Smartphone, Sun, Moon, Sparkles } from 'lucide-react';
 import ProfileCard from './components/react-bits/ProfileCard/ProfileCard';
+import BootScreen from './components/BootScreen/BootScreen';
 import './App.css';
 
 /* ─────────── dark-mode hook ─────────── */
@@ -71,6 +72,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-950 text-gray-100 transition-colors duration-300 relative overflow-hidden">
+
+      {/* ── BOOT / INTRO ── */}
+      <BootScreen />
 
       {/* ── CINEMATIC BACKDROP ── */}
       <div className="backdrop" aria-hidden="true" />
