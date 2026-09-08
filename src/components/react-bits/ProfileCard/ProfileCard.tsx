@@ -448,7 +448,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     <div
       ref={wrapRef}
       className={`relative touch-none ${className}`.trim()}
-      style={{ perspective: '500px', transform: 'translate3d(0, 0, 0.1px)', ...cardStyle } as React.CSSProperties}
+      style={cardStyle as React.CSSProperties}
     >
       {behindGlowEnabled && (
         <div
@@ -472,13 +472,14 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
             boxShadow:
               'rgba(0, 0, 0, 0.8) calc((var(--pointer-from-left) * 10px) - 3px) calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px',
             transition: 'transform 1s ease',
-            transform: 'translateZ(0) rotateX(0deg) rotateY(0deg)',
+            transform: 'perspective(500px) translateZ(0) rotateX(0deg) rotateY(0deg)',
             background: 'rgba(0, 0, 0, 0.9)',
             backfaceVisibility: 'hidden'
           }}
           onMouseEnter={e => {
             e.currentTarget.style.transition = 'none';
-            e.currentTarget.style.transform = 'translateZ(0) rotateX(var(--rotate-y)) rotateY(var(--rotate-x))';
+            e.currentTarget.style.transform =
+              'perspective(500px) translateZ(0) rotateX(var(--rotate-y)) rotateY(var(--rotate-x))';
           }}
           onMouseLeave={e => {
             const shell = shellRef.current;
@@ -487,7 +488,8 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
             } else {
               e.currentTarget.style.transition = 'transform 1s ease';
             }
-            e.currentTarget.style.transform = 'translateZ(0) rotateX(0deg) rotateY(0deg)';
+            e.currentTarget.style.transform =
+              'perspective(500px) translateZ(0) rotateX(0deg) rotateY(0deg)';
           }}
         >
           <div
@@ -537,56 +539,6 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                   t.style.display = 'none';
                 }}
               />
-              {showUserInfo && (
-                <div
-                  className="absolute z-[2] flex items-center justify-between backdrop-blur-[30px] border border-white/10 pointer-events-auto"
-                  style={
-                    {
-                      '--ui-inset': '20px',
-                      '--ui-radius-bias': '6px',
-                      bottom: 'var(--ui-inset)',
-                      left: 'var(--ui-inset)',
-                      right: 'var(--ui-inset)',
-                      background: 'rgba(255, 255, 255, 0.1)',
-                      borderRadius: 'calc(max(0px, var(--card-radius) - var(--ui-inset) + var(--ui-radius-bias)))',
-                      padding: '12px 14px'
-                    } as React.CSSProperties
-                  }
-                >
-                  <div className="flex items-center gap-3">
-                    <div
-                      className="rounded-full overflow-hidden border border-white/10 flex-shrink-0"
-                      style={{ width: '48px', height: '48px' }}
-                    >
-                      <img
-                        className="w-full h-full object-cover rounded-full"
-                        src={miniAvatarUrl || avatarUrl}
-                        alt={`${name || 'User'} mini avatar`}
-                        loading="lazy"
-                        style={{ display: 'block', gridArea: 'auto', borderRadius: '50%', pointerEvents: 'auto' }}
-                        onError={e => {
-                          const t = e.target as HTMLImageElement;
-                          t.style.opacity = '0.5';
-                          t.src = avatarUrl;
-                        }}
-                      />
-                    </div>
-                    <div className="flex flex-col items-start gap-1.5">
-                      <div className="text-sm font-medium text-white/90 leading-none">@{handle}</div>
-                      <div className="text-sm text-white/70 leading-none">{status}</div>
-                    </div>
-                  </div>
-                  <button
-                    className="border border-white/10 rounded-lg px-4 py-3 text-xs font-semibold text-white/90 cursor-pointer backdrop-blur-[10px] transition-all duration-200 ease-out hover:border-white/40 hover:-translate-y-px"
-                    onClick={handleContactClick}
-                    style={{ pointerEvents: 'auto', display: 'block', gridArea: 'auto', borderRadius: '8px' }}
-                    type="button"
-                    aria-label={`Contact ${name || 'user'}`}
-                  >
-                    {contactText}
-                  </button>
-                </div>
-              )}
             </div>
 
             {/* Details content */}
@@ -643,6 +595,57 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
             </div>
           </div>
         </section>
+
+        {showUserInfo && (
+          <div
+            className="absolute z-[2] flex items-center justify-between backdrop-blur-[30px] border border-white/10 pointer-events-auto"
+            style={
+              {
+                '--ui-inset': '20px',
+                '--ui-radius-bias': '6px',
+                bottom: 'var(--ui-inset)',
+                left: 'var(--ui-inset)',
+                right: 'var(--ui-inset)',
+                background: 'rgba(255, 255, 255, 0.1)',
+                borderRadius: 'calc(max(0px, var(--card-radius) - var(--ui-inset) + var(--ui-radius-bias)))',
+                padding: '12px 14px'
+              } as React.CSSProperties
+            }
+          >
+            <div className="flex items-center gap-3">
+              <div
+                className="rounded-full overflow-hidden border border-white/10 flex-shrink-0"
+                style={{ width: '48px', height: '48px' }}
+              >
+                <img
+                  className="w-full h-full object-cover rounded-full"
+                  src={miniAvatarUrl || avatarUrl}
+                  alt={`${name || 'User'} mini avatar`}
+                  loading="lazy"
+                  style={{ display: 'block', gridArea: 'auto', borderRadius: '50%', pointerEvents: 'auto' }}
+                  onError={e => {
+                    const t = e.target as HTMLImageElement;
+                    t.style.opacity = '0.5';
+                    t.src = avatarUrl;
+                  }}
+                />
+              </div>
+              <div className="flex flex-col items-start gap-1.5">
+                <div className="text-sm font-medium text-white/90 leading-none">@{handle}</div>
+                <div className="text-sm text-white/70 leading-none">{status}</div>
+              </div>
+            </div>
+            <button
+              className="border border-white/10 rounded-lg px-4 py-3 text-xs font-semibold text-white/90 cursor-pointer backdrop-blur-[10px] transition-all duration-200 ease-out hover:border-white/40 hover:-translate-y-px"
+              onClick={handleContactClick}
+              style={{ pointerEvents: 'auto', display: 'block', gridArea: 'auto', borderRadius: '8px' }}
+              type="button"
+              aria-label={`Contact ${name || 'user'}`}
+            >
+              {contactText}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
