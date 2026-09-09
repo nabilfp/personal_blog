@@ -12,6 +12,7 @@ const ARM = ['pointerdown', 'mousedown', 'touchstart', 'keydown', 'click'];
 
 const AudioControl: React.FC<AudioControlProps> = ({ src }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [on, setOn] = useState(true);
   const wantedRef = useRef(true);
   const audibleRef = useRef(false);
@@ -81,7 +82,14 @@ const AudioControl: React.FC<AudioControlProps> = ({ src }) => {
       );
     };
 
-    const kick = () => {
+    const isButtonTarget = (event: Event): boolean => {
+      const btn = buttonRef.current;
+      if (!btn || !event.target) return false;
+      return btn === event.target || btn.contains(event.target as Node);
+    };
+
+    const kick = (event: Event) => {
+      if (isButtonTarget(event)) return;
       if (!canStart()) {
         disarm();
         return;
@@ -187,6 +195,7 @@ const AudioControl: React.FC<AudioControlProps> = ({ src }) => {
 
   return (
     <button
+      ref={buttonRef}
       onClick={toggle}
       className="audio-toggle"
       aria-label={on ? 'Turn music off' : 'Turn music on'}
