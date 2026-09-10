@@ -33,7 +33,6 @@ const biodataItems = [
   { label: 'Origin',    value: 'Jombang, East Java' },
   { label: 'Age',       value: '18 years old' },
   { label: 'High School', value: 'SMA Negeri Bareng' },
-  { label: 'University', value: 'Trunojoyo University, Madura' },
   { label: 'Status',    value: 'Student' },
 ];
 
@@ -100,10 +99,6 @@ export default function App() {
 
           {/* Right: logos + nav + theme toggle */}
           <nav className="flex items-center gap-3 sm:gap-4">
-            <img src="images/univ-logo.webp" alt="Universitas Trunojoyo Madura" className="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" loading="lazy" decoding="async" title="Universitas Trunojoyo Madura" />
-            <img src="images/ukm-logo.png"   alt="UKM Triple C"                className="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" loading="lazy" decoding="async" title="UKM Triple C" />
-            <img src="images/logo.svg"        alt="Logo UTM"                    className="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" loading="lazy" decoding="async" title="Logo UTM" />
-
             <a href="#hero"    className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">About</a>
             <a href="#biodata" className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Profile</a>
             <a href="#contact" className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Contact</a>
@@ -189,33 +184,6 @@ export default function App() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── LOGOS SECTION ── */}
-      <section className="py-12 px-4 sm:px-6 relative border-b border-white/5">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-center text-sm font-medium text-gray-500 mb-8 uppercase tracking-widest">Affiliation</p>
-          <div className="flex flex-wrap items-center justify-center gap-10">
-            <div className="flex flex-col items-center gap-2 group">
-              <div className="w-16 h-16 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center p-2 group-hover:shadow-lg group-hover:shadow-black/30 transition-shadow">
-                <img src="images/univ-logo.webp" alt="Universitas Trunojoyo Madura" className="w-full h-full object-contain" />
-              </div>
-              <span className="text-xs text-gray-500 text-center max-w-[80px]">Universitas Trunojoyo Madura</span>
-            </div>
-            <div className="flex flex-col items-center gap-2 group">
-              <div className="w-16 h-16 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center p-2 group-hover:shadow-lg group-hover:shadow-black/30 transition-shadow">
-                <img src="images/ukm-logo.png" alt="UKM Triple C" className="w-full h-full object-contain" />
-              </div>
-              <span className="text-xs text-gray-500 text-center max-w-[80px]">UKM Triple C</span>
-            </div>
-            <div className="flex flex-col items-center gap-2 group">
-              <div className="w-16 h-16 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center p-2 group-hover:shadow-lg group-hover:shadow-black/30 transition-shadow">
-                <img src="images/robot.svg" alt="robot" className="w-full h-full object-contain" />
-              </div>
-              <span className="text-xs text-gray-500 text-center max-w-[80px]">robot.svg</span>
-            </div>
           </div>
         </div>
       </section>
