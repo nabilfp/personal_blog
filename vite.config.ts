@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/tugas-kc-blog2/',
+  base: '/personal_blog/',
   plugins: [react()],
   css: {
     postcss: './postcss.config.cjs',

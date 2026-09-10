@@ -1,8 +1,8 @@
 {
-  "name": "tugas-kc-blog2",
+  "name": "personal_blog",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://nabilfp.github.io/tugas-kc-blog2/",
+  "homepage": "https://nabilfp.github.io/personal_blog/",
   "type": "module",
   "scripts": {
     "dev": "vite",
