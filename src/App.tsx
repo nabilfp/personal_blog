@@ -1,31 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Phone, Mail, Smartphone, Sun, Moon } from 'lucide-react';
+import { Phone, Mail, Smartphone } from 'lucide-react';
 import ProfileCard from './components/react-bits/ProfileCard/ProfileCard';
 import BootScreen from './components/BootScreen/BootScreen';
 import AudioControl from './components/AudioControl/AudioControl';
 import './App.css';
-
-/* ─────────── dark-mode hook ─────────── */
-function useDarkMode() {
-  const [dark, setDark] = useState<boolean>(() => {
-    const stored = localStorage.getItem('theme');
-    if (stored) return stored === 'dark';
-    return false;
-  });
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (dark) {
-      root.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      root.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [dark]);
-
-  return { dark, toggle: () => setDark(d => !d) };
-}
 
 /* ─────────── biodata data ─────────── */
 const biodataItems = [
@@ -53,7 +31,6 @@ function GithubIcon({ className }: { className?: string }) {
 
 /* ─────────── App ─────────── */
 export default function App() {
-  const { dark, toggle } = useDarkMode();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -102,14 +79,6 @@ export default function App() {
             <a href="#hero"    className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">About</a>
             <a href="#biodata" className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Profile</a>
             <a href="#contact" className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Contact</a>
-
-            <button
-              onClick={toggle}
-              aria-label="Toggle dark mode"
-              className="ml-1 p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors text-lg"
-            >
-              {dark ? <Sun className="text-yellow-400" /> : <Moon className="text-gray-400" />}
-            </button>
           </nav>
         </div>
       </header>
