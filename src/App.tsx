@@ -29,16 +29,16 @@ function useDarkMode() {
 
 /* ─────────── biodata data ─────────── */
 const biodataItems = [
-  { label: 'Nama',   value: 'Nabil Najwa Akmal' },
-  { label: 'Asal',   value: 'Jombang, Jawa Timur' },
-  { label: 'Umur',   value: '18 Tahun' },
-  { label: 'Alumni', value: 'SMA Negeri Bareng' },
-  { label: 'Kuliah', value: 'Universitas Trunojoyo Madura' },
-  { label: 'Status', value: 'Mahasiswa' },
+  { label: 'Full Name', value: 'Nabil Najwa Akmal' },
+  { label: 'Origin',    value: 'Jombang, East Java' },
+  { label: 'Age',       value: '18 years old' },
+  { label: 'High School', value: 'SMA Negeri Bareng' },
+  { label: 'University', value: 'Trunojoyo University, Madura' },
+  { label: 'Status',    value: 'Student' },
 ];
 
 const contactItems = [
-  { icon: Phone, label: 'WhatsApp', href: 'https://wa.me/6285213081416?text=AKU%20PENDUKUNG%20ISRAEL%20DAN%20AKU%20BANGGA%20%23LARPINGFINALBOS%23AKUTRIPLECLAH', text: '085213081416' },
+  { icon: Phone, label: 'WhatsApp', href: 'https://wa.me/6285213081416?text=I%20SUPPORT%20ISRAEL%20AND%20I%20AM%20PROUD%20%23LARPINGFINALBOS%23AKUTRIPLECLAH', text: '085213081416' },
   { icon: Mail, label: 'Email',    href: 'mailto:nabilnajwaakmal02@gmail.com', text: 'nabilnajwaakmal02@gmail.com' },
   { icon: Smartphone, label: 'Instagram', href: 'https://www.instagram.com/naaaa.bl/', text: '@naaaa.bl' },
   { icon: GithubIcon, label: 'GitHub',   href: 'https://github.com/nabilfp', text: 'github.com/nabilfp' },
@@ -104,9 +104,9 @@ export default function App() {
             <img src="images/ukm-logo.png"   alt="UKM Triple C"                className="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" loading="lazy" decoding="async" title="UKM Triple C" />
             <img src="images/logo.svg"        alt="Logo UTM"                    className="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" loading="lazy" decoding="async" title="Logo UTM" />
 
-            <a href="#hero"    className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Tentang</a>
-            <a href="#biodata" className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Biodata</a>
-            <a href="#contact" className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Kontak</a>
+            <a href="#hero"    className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">About</a>
+            <a href="#biodata" className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Profile</a>
+            <a href="#contact" className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Contact</a>
 
             <button
               onClick={toggle}
@@ -131,8 +131,8 @@ export default function App() {
               name=""
               title=""
               handle="nabilfp"
-              status="Aktif"
-              contactText="Kontak"
+              status="Active"
+              contactText="Contact"
               enableTilt={true}
               onContactClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
             />
@@ -141,13 +141,13 @@ export default function App() {
           {/* Hero text */}
           <div className="flex-1 text-center lg:text-left">
             <div className="inline-block bg-white/10 border border-white/15 text-gray-300 text-xs font-semibold px-3 py-1 rounded-full mb-4 tracking-wide uppercase">
-              Data Diri &amp; Biodata
+              Personal Profile
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Halo, saya <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-400">Nabil</span>
+              Hello, I am <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-400">Nabil</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-400 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
-              Saya berusia 18 tahun dan sangat menyukai teknologi, khususnya <strong className="text-white">infrastruktur IT</strong>, administrasi sistem, dan keamanan siber. Saya sedang menempuh gelar di bidang Sistem Informasi dan aktif membangun fondasi kemampuan saya di dunia teknologi.
+              I am an 18-year-old who loves technology, especially <strong className="text-white">IT infrastructure</strong>, systems administration, and cybersecurity. I am currently pursuing a degree in Information Systems and actively building my foundation of skills in the tech world.
             </p>
 
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
@@ -155,13 +155,13 @@ export default function App() {
                 href="#biodata"
                 className="px-6 py-3 bg-white text-gray-900 font-semibold rounded-xl shadow-lg shadow-black/40 hover:bg-gray-200 transition-all duration-200 hover:-translate-y-0.5"
               >
-                Lihat Biodata →
+                View Profile →
               </a>
               <a
                 href="#contact"
                 className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold rounded-xl shadow hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
               >
-                Hubungi Saya
+                Contact Me
               </a>
             </div>
           </div>
@@ -172,7 +172,7 @@ export default function App() {
       <section id="biodata" className="py-20 px-4 sm:px-6 relative">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>Biodata Diri</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>Personal Profile</h2>
             <div className="w-16 h-1 bg-gradient-to-r from-gray-400 to-gray-600 rounded-full mx-auto" />
           </div>
 
@@ -196,7 +196,7 @@ export default function App() {
       {/* ── LOGOS SECTION ── */}
       <section className="py-12 px-4 sm:px-6 relative border-b border-white/5">
         <div className="max-w-3xl mx-auto">
-          <p className="text-center text-sm font-medium text-gray-500 mb-8 uppercase tracking-widest">Afiliasi</p>
+          <p className="text-center text-sm font-medium text-gray-500 mb-8 uppercase tracking-widest">Affiliation</p>
           <div className="flex flex-wrap items-center justify-center gap-10">
             <div className="flex flex-col items-center gap-2 group">
               <div className="w-16 h-16 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center p-2 group-hover:shadow-lg group-hover:shadow-black/30 transition-shadow">
@@ -224,7 +224,7 @@ export default function App() {
       <section id="contact" className="py-20 px-4 sm:px-6 relative">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>Kontak</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>Contact</h2>
             <div className="w-16 h-1 bg-gradient-to-r from-gray-400 to-gray-600 rounded-full mx-auto" />
           </div>
 
@@ -254,7 +254,7 @@ export default function App() {
       {/* ── FOOTER ── */}
       <footer className="py-8 px-4 text-center border-t border-white/5">
         <p className="text-sm text-gray-500">
-          © 2026 Data Diri — <span className="font-medium text-gray-400">Nabil Najwa Akmal</span>
+          © 2026 Personal Blog — <span className="font-medium text-gray-400">Nabil Najwa Akmal</span>
         </p>
       </footer>
 
