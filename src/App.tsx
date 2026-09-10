@@ -98,6 +98,8 @@ export default function App() {
               status="Active"
               contactText="Contact"
               enableTilt={true}
+              enableMobileTilt={true}
+              mobileTiltSensitivity={5}
               onContactClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
             />
           </div>

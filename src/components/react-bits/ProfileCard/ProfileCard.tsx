@@ -89,9 +89,6 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
 
   const tiltEngine = useMemo<TiltEngine | null>(() => {
     if (!enableTilt) return null;
-    if (typeof window !== 'undefined' && 'matchMedia' in window) {
-      if (window.matchMedia('(pointer: coarse), (hover: none)').matches) return null;
-    }
 
     let rafId: number | null = null;
     let running = false;
