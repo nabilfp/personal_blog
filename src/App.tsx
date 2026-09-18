@@ -7,6 +7,7 @@ import './App.css';
 
 /* ─────────── biodata data ─────────── */
 const biodataItems = [
+  { label: 'Full Name', value: 'Nabil Najwa Akmal' },
   { label: 'Origin',    value: 'Jombang, East Java' },
   { label: 'Age',       value: '18 years old' },
   { label: 'High School', value: 'SMA Negeri Bareng' },
