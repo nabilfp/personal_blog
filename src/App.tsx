@@ -57,12 +57,12 @@ export default function App() {
 
       {/* ── DECORATIVE STARS & DVD ── */}
       <div className="decor" aria-hidden="true">
-        <img src="assets/el/opt_star-b.webp" alt="" className="el el--star-b" decoding="async" />
-        <img src="assets/el/opt_star-a.webp" alt="" className="el el--star-a" decoding="async" />
-        <img src="assets/el/opt_cd-a.webp" alt="" className="el el--dvd" decoding="async" />
-        <img src="assets/el/opt_cd-a.webp" alt="" className="el el--dvd2" decoding="async" />
-        <img src="assets/el/opt_star-a.webp" alt="" className="el el--star-a2" decoding="async" />
-        <img src="assets/el/opt_star-b.webp" alt="" className="el el--star-b2" decoding="async" />
+        <img src="assets/el/opt_star-b-v2.webp" alt="" className="el el--star-b" decoding="async" />
+        <img src="assets/el/opt_star-a-v2.webp" alt="" className="el el--star-a" decoding="async" />
+        <img src="assets/el/opt_cd-a-v2.webp" alt="" className="el el--dvd" decoding="async" />
+        <img src="assets/el/opt_cd-a-v2.webp" alt="" className="el el--dvd2" decoding="async" />
+        <img src="assets/el/opt_star-a-v2.webp" alt="" className="el el--star-a2" decoding="async" />
+        <img src="assets/el/opt_star-b-v2.webp" alt="" className="el el--star-b2" decoding="async" />
       </div>
 
       {/* ── NAVBAR ── */}

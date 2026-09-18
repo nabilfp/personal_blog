@@ -445,7 +445,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     <div
       ref={wrapRef}
       className={`relative touch-none ${className}`.trim()}
-      style={{ ...cardStyle, perspective: '900px' } as React.CSSProperties}
+      style={cardStyle as React.CSSProperties}
     >
       {behindGlowEnabled && (
         <div
@@ -469,14 +469,14 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
             boxShadow:
               'rgba(0, 0, 0, 0.8) calc((var(--pointer-from-left) * 10px) - 3px) calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px',
             transition: 'transform 1s ease',
-            transform: 'none',
+            transform: 'perspective(500px) translateZ(0) rotateX(0deg) rotateY(0deg)',
             background: 'rgba(0, 0, 0, 0.9)',
             backfaceVisibility: 'hidden'
           }}
           onMouseEnter={e => {
             e.currentTarget.style.transition = 'none';
             e.currentTarget.style.transform =
-              'rotateX(var(--rotate-y)) rotateY(var(--rotate-x))';
+              'perspective(500px) translateZ(0) rotateX(var(--rotate-y)) rotateY(var(--rotate-x))';
           }}
           onMouseLeave={e => {
             const shell = shellRef.current;
@@ -485,7 +485,8 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
             } else {
               e.currentTarget.style.transition = 'transform 1s ease';
             }
-            e.currentTarget.style.transform = 'none';
+            e.currentTarget.style.transform =
+              'perspective(500px) translateZ(0) rotateX(0deg) rotateY(0deg)';
           }}
         >
           <div
