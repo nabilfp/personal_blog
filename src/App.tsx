@@ -107,7 +107,7 @@ export default function App() {
                 href="#biodata"
                 className="px-6 py-3 bg-white text-gray-900 font-semibold rounded-xl shadow-lg shadow-black/40 hover:bg-gray-200 transition-all duration-200 hover:-translate-y-0.5"
               >
-                View Profile →
+                View Profile
               </a>
               <a
                 href="#contact"
