@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Phone, Mail, Smartphone } from 'lucide-react';
+import { Mail, Smartphone } from 'lucide-react';
 import ProfileCard from './components/react-bits/ProfileCard/ProfileCard';
 import BootScreen from './components/BootScreen/BootScreen';
 import AudioControl from './components/AudioControl/AudioControl';
@@ -7,7 +7,6 @@ import './App.css';
 
 /* ─────────── biodata data ─────────── */
 const biodataItems = [
-  { label: 'Full Name', value: 'Nabil Najwa Akmal' },
   { label: 'Origin',    value: 'Jombang, East Java' },
   { label: 'Age',       value: '18 years old' },
   { label: 'High School', value: 'SMA Negeri Bareng' },
@@ -15,7 +14,6 @@ const biodataItems = [
 ];
 
 const contactItems = [
-  { icon: Phone, label: 'WhatsApp', href: 'https://wa.me/6285213081416?text=I%20SUPPORT%20ISRAEL%20AND%20I%20AM%20PROUD%20%23LARPINGFINALBOS%23AKUTRIPLECLAH', text: '085213081416' },
   { icon: Mail, label: 'Email',    href: 'mailto:nabillgithub@gmail.com', text: 'nabillgithub@gmail.com' },
   { icon: Smartphone, label: 'Instagram', href: 'https://www.instagram.com/naaaa.bl/', text: '@naaaa.bl' },
   { icon: GithubIcon, label: 'GitHub',   href: 'https://github.com/nabilfp', text: 'github.com/nabilfp' },
@@ -64,16 +62,6 @@ export default function App() {
       {/* ── NAVBAR ── */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/5' : 'bg-transparent'}`}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
-          {/* Left: avatar + name */}
-          <div className="flex items-center gap-3">
-            <img
-              src="images/profil.jpg"
-              alt="Nabil Najwa Akmal"
-              className="w-9 h-9 rounded-full object-cover border-2 border-white/20"
-            />
-            <span className="font-bold text-white text-sm sm:text-base">Nabil Najwa Akmal</span>
-          </div>
-
           {/* Right: logos + nav + theme toggle */}
           <nav className="flex items-center gap-3 sm:gap-4">
             <a href="#hero"    className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">About</a>
@@ -193,7 +181,7 @@ export default function App() {
       {/* ── FOOTER ── */}
       <footer className="py-8 px-4 text-center border-t border-white/5">
         <p className="text-sm text-gray-500">
-          © 2026 Personal Blog — <span className="font-medium text-gray-400">Nabil Najwa Akmal</span>
+          © 2026 Personal Blog
         </p>
       </footer>
 
