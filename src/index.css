@@ -202,6 +202,32 @@ body.is-booting {
   50% { transform: translateY(25px) rotate(15deg); }
 }
 
+/* ── Liquid Glass (iOS-style) ── */
+.liquid-glass {
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 45%, rgba(255,255,255,0.12) 100%);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.16);
+  box-shadow:
+    0 10px 30px -16px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 0 18px rgba(255, 255, 255, 0.045);
+  transition: background 250ms ease, border-color 250ms ease, box-shadow 250ms ease, transform 200ms ease;
+}
+
+.liquid-glass:hover {
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.24) 0%, rgba(255,255,255,0.09) 45%, rgba(255,255,255,0.16) 100%);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 16px 40px -16px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 22px rgba(255, 255, 255, 0.07);
+}
+
 /* ── Audio Toggle ── */
 .audio-toggle {
   position: fixed;
@@ -214,22 +240,47 @@ body.is-booting {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.14);
   color: #e5e5e5;
   cursor: pointer;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 .audio-toggle:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
 }
 
 .audio-toggle[aria-pressed='true'] {
-  border-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 0 18px rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 0 18px rgba(255, 255, 255, 0.15),
+    0 10px 30px -16px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+/* ── Sound hint (shown only when the browser blocked audible autoplay) ── */
+.audio-hint {
+  position: fixed;
+  left: 50%;
+  bottom: 1.75rem;
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #e5e5e5;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: hint-in 0.4s ease-out both, hint-pulse 2.4s ease-in-out 0.4s infinite;
+}
+
+@keyframes hint-in {
+  from { opacity: 0; transform: translate(-50%, 12px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@keyframes hint-pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
 }

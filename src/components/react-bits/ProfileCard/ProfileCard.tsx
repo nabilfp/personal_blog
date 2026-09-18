@@ -589,7 +589,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
 
         {showUserInfo && (
           <div
-            className="absolute z-[2] flex items-center justify-between backdrop-blur-[30px] border border-white/10 pointer-events-auto"
+            className="absolute z-[2] flex items-center justify-between liquid-glass pointer-events-auto"
             style={
               {
                 '--ui-inset': '20px',
@@ -597,7 +597,6 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                 bottom: 'var(--ui-inset)',
                 left: 'var(--ui-inset)',
                 right: 'var(--ui-inset)',
-                background: 'rgba(255, 255, 255, 0.1)',
                 borderRadius: 'calc(max(0px, var(--card-radius) - var(--ui-inset) + var(--ui-radius-bias)))',
                 padding: '12px 14px'
               } as React.CSSProperties

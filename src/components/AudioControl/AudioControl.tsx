@@ -19,6 +19,7 @@ const AudioControl: React.FC<AudioControlProps> = ({ src }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [on, setOn] = useState(true);
+  const [showHint, setShowHint] = useState(false);
 
   const wantedRef = useRef(true);
   const audibleRef = useRef(false);
@@ -78,6 +79,7 @@ const AudioControl: React.FC<AudioControlProps> = ({ src }) => {
     const win = () => {
       audibleRef.current = true;
       setOn(true);
+      setShowHint(false);
       fadeTo(VOL);
       return true;
     };
@@ -163,6 +165,7 @@ const AudioControl: React.FC<AudioControlProps> = ({ src }) => {
         if (ok) return; // autoplay allowed
         playPrimed(); // blocked: keep the track ready, muted
         arm(); // and start for real on the first interaction
+        setShowHint(true); // and tell the visitor how to turn the sound on
       });
     }
 
@@ -244,16 +247,24 @@ const AudioControl: React.FC<AudioControlProps> = ({ src }) => {
   };
 
   return (
-    <button
-      ref={buttonRef}
-      onClick={toggle}
-      className="audio-toggle"
-      aria-label={on ? 'Turn music off' : 'Turn music on'}
-      aria-pressed={on}
-      title={on ? 'Music on' : 'Music off'}
-    >
-      {on ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
-    </button>
+    <>
+      <button
+        ref={buttonRef}
+        onClick={toggle}
+        className="audio-toggle liquid-glass"
+        aria-label={on ? 'Turn music off' : 'Turn music on'}
+        aria-pressed={on}
+        title={on ? 'Music on' : 'Music off'}
+      >
+        {on ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
+      </button>
+      {showHint && (
+        <div className="audio-hint liquid-glass" role="status">
+          <VolumeX className="w-4 h-4" />
+          <span>Tap di mana saja untuk menyalakan musik</span>
+        </div>
+      )}
+    </>
   );
 };
 

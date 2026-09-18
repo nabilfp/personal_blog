@@ -92,7 +92,7 @@ export default function App() {
 
           {/* Hero text */}
           <div className="flex-1 text-center lg:text-left">
-            <div className="inline-block bg-white/10 border border-white/15 text-gray-300 text-xs font-semibold px-3 py-1 rounded-full mb-4 tracking-wide uppercase">
+            <div className="inline-block liquid-glass text-gray-300 text-xs font-semibold px-3 py-1 rounded-full mb-4 tracking-wide uppercase">
               Personal Profile
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -111,7 +111,7 @@ export default function App() {
               </a>
               <a
                 href="#contact"
-                className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold rounded-xl shadow hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+                className="px-6 py-3 liquid-glass text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
               >
                 Contact Me
               </a>
@@ -132,7 +132,7 @@ export default function App() {
             {biodataItems.map((item) => (
               <div
                 key={item.label}
-                className="group relative bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-white/30 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-black/30"
+                className="group relative liquid-glass rounded-2xl p-6 transition-all duration-200 hover:-translate-y-1"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                 <div className="relative">
@@ -160,7 +160,7 @@ export default function App() {
                 href={item.href}
                 target={item.href.startsWith('http') ? '_blank' : undefined}
                 rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="flex items-center gap-4 p-5 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-white/30 hover:shadow-lg hover:shadow-black/30 transition-all duration-200 group"
+                className="flex items-center gap-4 p-5 liquid-glass rounded-2xl transition-all duration-200 group"
               >
                 <item.icon className="text-2xl flex-shrink-0 text-gray-400 group-hover:text-white transition-colors" />
                 <div className="flex-1 min-w-0">
