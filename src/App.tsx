@@ -3,6 +3,7 @@ import { Mail, Smartphone } from 'lucide-react';
 import ProfileCard from './components/react-bits/ProfileCard/ProfileCard';
 import BootScreen from './components/BootScreen/BootScreen';
 import AudioControl from './components/AudioControl/AudioControl';
+import LiquidNav from './components/LiquidNav/LiquidNav';
 import './App.css';
 
 /* ─────────── biodata data ─────────── */
@@ -66,16 +67,7 @@ export default function App() {
       </div>
 
       {/* ── NAVBAR ── */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/5' : 'bg-transparent'}`}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-center">
-          {/* Right: logos + nav + theme toggle */}
-          <nav className="flex items-center gap-5 sm:gap-8">
-            <a href="#hero"    className="text-sm font-medium text-gray-400 hover:text-white transition-colors">About</a>
-            <a href="#biodata" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Profile</a>
-            <a href="#contact" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Contact</a>
-          </nav>
-        </div>
-      </header>
+      <LiquidNav scrolled={scrolled} />
 
       {/* ── HERO ── */}
       <section id="hero" className="min-h-screen flex items-center justify-center pt-20 px-4 sm:px-6 relative">
