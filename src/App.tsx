@@ -56,9 +56,14 @@ export default function App() {
       <div className="backdrop" aria-hidden="true" />
 
       {/* ── DECORATIVE STARS & DVD ── */}
-      <img src="assets/el/opt_star-a.webp" alt="" className="el el--star-a" aria-hidden="true" decoding="async" width="481" height="603" />
-      <img src="assets/el/opt_star-b.webp" alt="" className="el el--star-b" aria-hidden="true" decoding="async" width="1167" height="1170" />
-      <img src="assets/el/opt_cd-a.webp" alt="" className="el el--dvd" aria-hidden="true" decoding="async" width="794" height="726" />
+      <div className="decor" aria-hidden="true">
+        <img src="assets/el/opt_star-b.webp" alt="" className="el el--star-b" decoding="async" />
+        <img src="assets/el/opt_star-a.webp" alt="" className="el el--star-a" decoding="async" />
+        <img src="assets/el/opt_cd-a.webp" alt="" className="el el--dvd" decoding="async" />
+        <img src="assets/el/opt_cd-a.webp" alt="" className="el el--dvd2" decoding="async" />
+        <img src="assets/el/opt_star-a.webp" alt="" className="el el--star-a2" decoding="async" />
+        <img src="assets/el/opt_star-b.webp" alt="" className="el el--star-b2" decoding="async" />
+      </div>
 
       {/* ── NAVBAR ── */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/5' : 'bg-transparent'}`}>

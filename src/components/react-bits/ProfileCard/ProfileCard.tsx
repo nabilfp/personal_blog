@@ -463,7 +463,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
           style={{
             height: '80svh',
             maxHeight: '540px',
-            aspectRatio: '0.718',
+            aspectRatio: '0.563',
             borderRadius: cardRadius,
             backgroundBlendMode: 'color-dodge, normal, normal, normal',
             boxShadow:

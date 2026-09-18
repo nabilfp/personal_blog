@@ -128,41 +128,69 @@ body.is-booting {
   opacity: 0.55;
 }
 
-/* ── Shutterkif Decorative Elements ── */
+/* ── Decorative Elements (stars & DVD) ── */
+.decor {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
 .el {
   position: absolute;
   pointer-events: none;
-  z-index: 0;
   mix-blend-mode: screen;
   filter: invert(1);
-  opacity: 0.5;
-}
-
-.el--star-a {
-  left: 66.3%;
-  top: -12.41%;
-  width: 31.46%;
-  animation: float-a 20s ease-in-out infinite;
+  opacity: 0.45;
 }
 
 .el--star-b {
-  left: -10.78%;
-  top: 12.13%;
-  width: 60.78%;
+  top: -8%;
+  left: -8%;
+  width: 38%;
   animation: float-b 25s ease-in-out infinite;
+}
+
+.el--star-a {
+  top: 6%;
+  right: 4%;
+  width: 22%;
+  animation: float-a 21s ease-in-out infinite;
+}
+
+.el--dvd {
+  top: 33%;
+  left: 5%;
+  width: 12%;
+  animation: float-c 18s ease-in-out infinite;
+}
+
+.el--dvd2 {
+  top: 56%;
+  right: 7%;
+  width: 10%;
+  animation: float-c 23s ease-in-out infinite;
+}
+
+.el--star-a2 {
+  bottom: 7%;
+  left: 8%;
+  width: 16%;
+  animation: float-a 28s ease-in-out infinite;
+}
+
+.el--star-b2 {
+  bottom: -10%;
+  right: -6%;
+  width: 32%;
+  animation: float-b 31s ease-in-out infinite;
 }
 
 @keyframes float-a {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   33% { transform: translateY(-30px) rotate(10deg); }
   66% { transform: translateY(20px) rotate(-5deg); }
-}
-
-.el--dvd {
-  right: -5%;
-  top: 30%;
-  width: 25%;
-  animation: float-c 18s ease-in-out infinite;
 }
 
 @keyframes float-b {
