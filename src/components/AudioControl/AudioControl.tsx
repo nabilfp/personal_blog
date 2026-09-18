@@ -9,6 +9,12 @@ const VOL = 0.42;
 // Gestures that grant activation (scroll/wheel do not).
 const GESTURES = ['pointerdown', 'mousedown', 'touchstart', 'keydown', 'click'];
 
+const hasUserActivation = (): boolean => {
+  const ua = (navigator as Navigator & { userActivation?: { hasBeenActive?: boolean } })
+    .userActivation;
+  return Boolean(ua?.hasBeenActive);
+};
+
 const AudioControl: React.FC<AudioControlProps> = ({ src }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -103,16 +109,12 @@ const AudioControl: React.FC<AudioControlProps> = ({ src }) => {
     audio.playsInline = true;
     audioRef.current = audio;
 
-    let stored = '1';
-    try {
-      stored = sessionStorage.getItem('kc_sound') || '1';
-    } catch {
-      /* noop */
-    }
-    wantedRef.current = stored === '1';
+    // Always try to play with sound on every page load (button is only used to
+    // turn it off), regardless of any previous toggle state.
+    wantedRef.current = true;
     audibleRef.current = false;
     startingRef.current = false;
-    setOn(stored === '1');
+    setOn(true);
 
     const isButtonTarget = (event: Event): boolean => {
       const btn = buttonRef.current;
@@ -174,6 +176,10 @@ const AudioControl: React.FC<AudioControlProps> = ({ src }) => {
         } catch {
           /* noop */
         }
+      } else if (wantedRef.current && !audibleRef.current && hasUserActivation()) {
+        // The tab was hidden/re-shown after an interaction we could not hook:
+        // take the safe opportunity to start audible playback.
+        start(true);
       }
     };
     document.addEventListener('visibilitychange', onVisibility);
@@ -201,11 +207,6 @@ const AudioControl: React.FC<AudioControlProps> = ({ src }) => {
     if (!audibleRef.current) {
       wantedRef.current = true;
       setOn(true);
-      try {
-        sessionStorage.setItem('kc_sound', '1');
-      } catch {
-        /* noop */
-      }
       if (startingRef.current) return;
       startingRef.current = true;
       playAudible(true).then(ok => {
@@ -221,11 +222,6 @@ const AudioControl: React.FC<AudioControlProps> = ({ src }) => {
     const want = !wantedRef.current;
     wantedRef.current = want;
     setOn(want);
-    try {
-      sessionStorage.setItem('kc_sound', want ? '1' : '0');
-    } catch {
-      /* noop */
-    }
 
     if (want) {
       audio.muted = false;
