@@ -445,7 +445,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     <div
       ref={wrapRef}
       className={`relative touch-none ${className}`.trim()}
-      style={cardStyle as React.CSSProperties}
+      style={{ ...cardStyle, perspective: '900px' } as React.CSSProperties}
     >
       {behindGlowEnabled && (
         <div
@@ -469,14 +469,14 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
             boxShadow:
               'rgba(0, 0, 0, 0.8) calc((var(--pointer-from-left) * 10px) - 3px) calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px',
             transition: 'transform 1s ease',
-            transform: 'perspective(500px) translateZ(0) rotateX(0deg) rotateY(0deg)',
+            transform: 'none',
             background: 'rgba(0, 0, 0, 0.9)',
             backfaceVisibility: 'hidden'
           }}
           onMouseEnter={e => {
             e.currentTarget.style.transition = 'none';
             e.currentTarget.style.transform =
-              'perspective(500px) translateZ(0) rotateX(var(--rotate-y)) rotateY(var(--rotate-x))';
+              'rotateX(var(--rotate-y)) rotateY(var(--rotate-x))';
           }}
           onMouseLeave={e => {
             const shell = shellRef.current;
@@ -485,8 +485,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
             } else {
               e.currentTarget.style.transition = 'transform 1s ease';
             }
-            e.currentTarget.style.transform =
-              'perspective(500px) translateZ(0) rotateX(0deg) rotateY(0deg)';
+            e.currentTarget.style.transform = 'none';
           }}
         >
           <div
@@ -509,27 +508,24 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
             <div
               className="overflow-visible"
               style={{
-                mixBlendMode: 'luminosity',
-                transform: 'translateZ(2px)',
+                position: 'relative',
                 gridArea: '1 / -1',
                 borderRadius: cardRadius,
-                pointerEvents: 'none',
-                backfaceVisibility: 'hidden'
+                pointerEvents: 'none'
               }}
             >
               <img
-                className="w-full absolute left-1/2 bottom-[-1px] will-change-transform transition-transform duration-[120ms] ease-out"
+                className="w-full absolute left-1/2 bottom-[-1px] transition-transform duration-[120ms] ease-out"
                 src={avatarUrl}
                 alt={`${name || 'User'} avatar`}
                 loading="lazy"
                 style={{
                   transformOrigin: '50% 100%',
                   transform:
-                    'translateX(calc(-50% + (var(--pointer-from-left) - 0.5) * 6px)) translateZ(0) scaleY(calc(1 + (var(--pointer-from-top) - 0.5) * 0.02)) scaleX(calc(1 + (var(--pointer-from-left) - 0.5) * 0.01))',
+                    'translateX(calc(-50% + (var(--pointer-from-left) - 0.5) * 6px)) scaleY(calc(1 + (var(--pointer-from-top) - 0.5) * 0.02)) scaleX(calc(1 + (var(--pointer-from-left) - 0.5) * 0.01))',
                   objectFit: 'cover',
                   objectPosition: 'center bottom',
-                  borderRadius: cardRadius,
-                  backfaceVisibility: 'hidden'
+                  borderRadius: cardRadius
                 }}
                 onError={e => {
                   const t = e.target as HTMLImageElement;

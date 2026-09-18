@@ -67,12 +67,12 @@ export default function App() {
 
       {/* ── NAVBAR ── */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/5' : 'bg-transparent'}`}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-center">
           {/* Right: logos + nav + theme toggle */}
-          <nav className="flex items-center gap-3 sm:gap-4">
-            <a href="#hero"    className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">About</a>
-            <a href="#biodata" className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Profile</a>
-            <a href="#contact" className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Contact</a>
+          <nav className="flex items-center gap-5 sm:gap-8">
+            <a href="#hero"    className="text-sm font-medium text-gray-400 hover:text-white transition-colors">About</a>
+            <a href="#biodata" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Profile</a>
+            <a href="#contact" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Contact</a>
           </nav>
         </div>
       </header>
