@@ -470,8 +470,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
               'rgba(0, 0, 0, 0.8) calc((var(--pointer-from-left) * 10px) - 3px) calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px',
             transition: 'transform 1s ease',
             transform: 'perspective(500px) translateZ(0) rotateX(0deg) rotateY(0deg)',
-            background: 'rgba(0, 0, 0, 0.9)',
-            backfaceVisibility: 'hidden'
+            background: 'rgba(0, 0, 0, 0.9)'
           }}
           onMouseEnter={e => {
             e.currentTarget.style.transition = 'none';
@@ -500,10 +499,10 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
             }}
           >
             {/* Shine layer */}
-            <div style={shineStyle} />
+            <div style={{ ...shineStyle, mixBlendMode: 'normal', opacity: 0.08 }} />
 
             {/* Glare layer */}
-            <div style={glareStyle} />
+            <div style={{ ...glareStyle, mixBlendMode: 'normal', opacity: 0.12 }} />
 
             {/* Avatar content */}
             <div
@@ -519,7 +518,6 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                 className="w-full absolute left-1/2 bottom-[-1px] transition-transform duration-[120ms] ease-out"
                 src={avatarUrl}
                 alt={`${name || 'User'} avatar`}
-                loading="lazy"
                 style={{
                   transformOrigin: '50% 100%',
                   transform:
@@ -541,7 +539,6 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
               style={{
                 transform:
                   'translate3d(calc(var(--pointer-from-left) * -6px + 3px), calc(var(--pointer-from-top) * -6px + 3px), 0.1px)',
-                mixBlendMode: 'luminosity',
                 gridArea: '1 / -1',
                 borderRadius: cardRadius,
                 pointerEvents: 'none'
